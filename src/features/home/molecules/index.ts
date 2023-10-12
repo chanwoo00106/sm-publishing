@@ -1,0 +1,6 @@
+export { default as Advertisement } from './Advertisement'
+export { default as Comming } from './Comming'
+export { default as ShopLink } from './ShopLink'
+export { default as Notice } from './Notice'
+export { default as BottomSmallSection } from './BottomSmallSection'
+export { default as BottomBigSection } from './BottomBigSection'
