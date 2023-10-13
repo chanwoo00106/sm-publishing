@@ -3,6 +3,8 @@ import { Image, StyleSheet, View } from 'react-native'
 import { Bell, Menu } from '@src/assets/svgs'
 import { WithLocalSvg } from 'react-native-svg'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { NavigationState, useNavigation } from '@react-navigation/native'
+import { SCREENS } from '@src/screens'
 
 const Header = () => {
   const insets = useSafeAreaInsets()

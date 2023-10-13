@@ -1,21 +1,38 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import HomeScreen from './HomeScreen'
 import { Header } from '@src/components'
+import { MenuHeader } from '@src/features/menu'
+import { RootStackParamList } from './type'
 
-const Stack = createNativeStackNavigator()
+import HomeScreen from './HomeScreen'
+import MenuScreen from './MenuScreen'
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
+
+export const SCREENS = {
+  home: 'Home',
+  menu: 'Menu',
+} as const
 
 const Screens = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          header: Header,
-          headerBackVisible: true,
-        }}
-      >
-        <Stack.Screen name='home' component={HomeScreen} />
+      <Stack.Navigator initialRouteName={SCREENS.menu}>
+        <Stack.Screen
+          name={SCREENS.home}
+          component={HomeScreen}
+          options={{
+            header: Header,
+          }}
+        />
+        <Stack.Screen
+          name={SCREENS.menu}
+          component={MenuScreen}
+          options={{
+            header: MenuHeader,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
