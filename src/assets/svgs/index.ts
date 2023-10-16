@@ -6,6 +6,7 @@ import Close from './Close.svg'
 import Plus from './Plus.svg'
 import Person from './Person.svg'
 import KWANGYA119 from './KWANGYA119.svg'
+import Pen from './Pen.svg'
 
 export {
   Bell,
@@ -16,4 +17,5 @@ export {
   Plus,
   Person,
   KWANGYA119,
+  Pen,
 }

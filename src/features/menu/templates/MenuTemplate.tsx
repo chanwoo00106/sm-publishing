@@ -8,7 +8,7 @@ import { Footer, Interest, Profile } from '../organisms'
 const MenuTemplate = () => {
   return (
     <View>
-      <Profile />
+      <Profile username='변찬우' email='chan1234@naver.com' />
       <View style={styles.menus}>
         <Interest />
 
