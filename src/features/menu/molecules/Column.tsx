@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { ColumnRightIcon } from '@src/features/menu/atoms'
 
 interface Props {
@@ -10,11 +10,13 @@ interface Props {
 
 const Column = ({ label, badge, iconLabel }: Props) => {
   return (
-    <View style={styles.wrapper}>
-      <Text>{label}</Text>
+    <Pressable style={({ pressed }) => (pressed ? styles.onPress : undefined)}>
+      <View style={styles.wrapper}>
+        <Text>{label}</Text>
 
-      <ColumnRightIcon badge={badge} label={iconLabel} />
-    </View>
+        <ColumnRightIcon badge={badge} label={iconLabel} />
+      </View>
+    </Pressable>
   )
 }
 
@@ -24,6 +26,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  onPress: {
+    backgroundColor: '#f6f8fb',
+    borderRadius: 12,
   },
 })
 

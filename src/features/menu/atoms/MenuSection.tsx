@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     backgroundColor: '#fff',
     borderRadius: 16,
+    gap: 4,
   },
   label: {
     color: '#8c939a',

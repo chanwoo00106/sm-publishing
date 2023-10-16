@@ -1,15 +1,22 @@
 import React from 'react'
 import { Close } from '@src/assets/svgs'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { WithLocalSvg } from 'react-native-svg'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import useNavigate from '@src/hooks/useNavigate'
+import { SCREENS } from '@src/constant'
 
 const Header = () => {
   const insets = useSafeAreaInsets()
+  const navigate = useNavigate()
+
+  const MoveToHome = () => navigate(SCREENS.home)
 
   return (
     <View style={{ ...styles.wrapper, paddingTop: insets.top }}>
-      <WithLocalSvg width={32} height={32} asset={Close} />
+      <TouchableOpacity onPress={MoveToHome}>
+        <WithLocalSvg width={32} height={32} asset={Close} />
+      </TouchableOpacity>
     </View>
   )
 }
