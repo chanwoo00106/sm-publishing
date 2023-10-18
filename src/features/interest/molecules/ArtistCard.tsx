@@ -1,3 +1,4 @@
+import { ArtistsType } from '@src/constant'
 import React, { useState } from 'react'
 import {
   ImageBackground,
@@ -10,13 +11,21 @@ import { artistCheckListStore } from '../store'
 
 interface Props {
   image: ImageSourcePropType
-  name: string
+  name: ArtistsType
   backgroundColor: string
   checked: boolean
   logo: ImageSourcePropType
+  label: string
 }
 
-const ArtistCard = ({ image, name, backgroundColor, logo, checked }: Props) => {
+const ArtistCard = ({
+  image,
+  name,
+  backgroundColor,
+  logo,
+  checked,
+  label,
+}: Props) => {
   const [isChecked, setIsChecked] = useState<boolean>(checked)
   const { addArtist, removeArtist } = artistCheckListStore()
 
@@ -36,10 +45,10 @@ const ArtistCard = ({ image, name, backgroundColor, logo, checked }: Props) => {
           <ArtistCardActive
             backgroundColor={backgroundColor}
             logo={logo}
-            name={name}
+            name={label}
           />
         ) : (
-          <ArtistCardDefault name={name} />
+          <ArtistCardDefault name={label} />
         )}
       </ImageBackground>
     </Pressable>

@@ -1,9 +1,10 @@
+import { ArtistsType } from '@src/constant'
 import { create } from 'zustand'
 
 interface ArtistCheckList {
-  artistCheckList: string[]
-  addArtist: (artist: string) => void
-  removeArtist: (artist: string) => void
+  artistCheckList: ArtistsType[]
+  addArtist: (artist: ArtistsType) => void
+  removeArtist: (artist: ArtistsType) => void
 }
 
 export const artistCheckListStore = create<ArtistCheckList>((set) => ({
@@ -14,6 +15,6 @@ export const artistCheckListStore = create<ArtistCheckList>((set) => ({
     })),
   removeArtist: (artist) =>
     set((state) => ({
-      artistCheckList: state.artistCheckList.filter((i) => i === artist),
+      artistCheckList: state.artistCheckList.filter((i) => i !== artist),
     })),
 }))
