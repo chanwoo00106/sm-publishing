@@ -7,7 +7,7 @@ interface Props extends ViewProps {}
 
 const ShadowSection = ({ children, ...props }: Props) => {
   return (
-    <DropShadow {...props} style={{ ...props.style, ...styles.dropShadow }}>
+    <DropShadow {...props} style={[props.style, styles.dropShadow]}>
       {children}
     </DropShadow>
   )

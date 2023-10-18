@@ -8,6 +8,7 @@ import Person from './Person.svg'
 import KWANGYA119 from './KWANGYA119.svg'
 import Pen from './Pen.svg'
 import Dots from './Dots.svg'
+import Select from './Select.svg'
 
 export {
   Bell,
@@ -20,4 +21,5 @@ export {
   KWANGYA119,
   Pen,
   Dots,
+  Select,
 }

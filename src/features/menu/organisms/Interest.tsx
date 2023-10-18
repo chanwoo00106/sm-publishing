@@ -1,28 +1,33 @@
 import { Dots, Plus } from '@src/assets/svgs'
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, Pressable } from 'react-native'
 import { WithLocalSvg } from 'react-native-svg'
-import { ArtistsType, ARTISTS_IMAGE } from '@src/constant'
+import { ArtistsType, ARTISTS_IMAGE, SCREENS } from '@src/constant'
+import useNavigate from '@src/hooks/useNavigate'
 
 interface Props {
   artists?: ArtistsType[]
 }
 
 const Interest = ({ artists }: Props) => {
+  const navigate = useNavigate()
+
+  const moveToInterest = () => navigate(SCREENS.interest)
+
   if (!artists) {
     return (
-      <View style={styles.wrapper}>
+      <Pressable onPress={moveToInterest} style={styles.wrapper}>
         <Text style={styles.text}>관심 아티스트 설정하기</Text>
 
         <View style={styles.circle}>
           <WithLocalSvg width={24} height={24} asset={Plus} />
         </View>
-      </View>
+      </Pressable>
     )
   }
 
   return (
-    <View style={styles.wrapper}>
+    <Pressable onPress={moveToInterest} style={styles.wrapper}>
       <Text style={{ ...styles.text, color: '#222529' }}>내 관심 아티스트</Text>
 
       <View style={{ ...styles.list, gap: artists.length >= 3 ? 0 : 4 }}>
@@ -40,7 +45,7 @@ const Interest = ({ artists }: Props) => {
           </View>
         )}
       </View>
-    </View>
+    </Pressable>
   )
 }
 
