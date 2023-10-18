@@ -3,89 +3,103 @@ import { FlatList } from 'react-native'
 import { ArtistCard } from '../molecules'
 import KANGTA_IMAGE from '@src/assets/images/KANGTA_IMAGE.png'
 import { ARTISTS_IMAGE } from '@src/constant'
+import { artistCheckListStore } from '../store'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const data = [
   {
     image: KANGTA_IMAGE,
     name: 'KANGTA',
     backgroundColor: '#f4cd00',
-    checked: false,
+    logo: ARTISTS_IMAGE.KANGTA,
+  },
+  {
+    image: KANGTA_IMAGE,
+    name: 'BoA',
+    backgroundColor: '#ffffff',
     logo: ARTISTS_IMAGE.BoA,
   },
   {
     image: KANGTA_IMAGE,
-    name: 'KANGTA1',
+    name: 'TVXQ',
     backgroundColor: '#ffffff',
-    checked: false,
-    logo: ARTISTS_IMAGE.BoA,
+    logo: ARTISTS_IMAGE.TVXQ,
   },
   {
     image: KANGTA_IMAGE,
-    name: 'KANGTA2',
+    name: 'SUPER JUNIOR',
     backgroundColor: '#ffffff',
-    checked: false,
-    logo: ARTISTS_IMAGE.BoA,
+    logo: ARTISTS_IMAGE.SUPER_JUNIOR,
   },
   {
     image: KANGTA_IMAGE,
-    name: 'KANGTA3',
-    backgroundColor: '#ffffff',
-    checked: false,
-    logo: ARTISTS_IMAGE.BoA,
+    name: "GIRLS' GENERATION",
+    backgroundColor: '#f27996',
+    logo: ARTISTS_IMAGE.GOT,
   },
   {
     image: KANGTA_IMAGE,
-    name: 'KANGTA4',
-    backgroundColor: '#ffffff',
-    checked: false,
-    logo: ARTISTS_IMAGE.BoA,
+    name: 'SHINee',
+    backgroundColor: '#6ccdda',
+    logo: ARTISTS_IMAGE.SHINEE,
   },
   {
     image: KANGTA_IMAGE,
-    name: 'KANGTA5',
+    name: 'EXO',
     backgroundColor: '#ffffff',
-    checked: false,
-    logo: ARTISTS_IMAGE.BoA,
+    logo: ARTISTS_IMAGE.EXO,
   },
   {
     image: KANGTA_IMAGE,
-    name: 'KANGTA6',
+    name: 'Red Velvet',
     backgroundColor: '#ffffff',
-    checked: false,
-    logo: ARTISTS_IMAGE.BoA,
+    logo: ARTISTS_IMAGE.RedVelvet,
   },
   {
     image: KANGTA_IMAGE,
-    name: 'KANGTA7',
+    name: 'NCT 127',
     backgroundColor: '#ffffff',
-    checked: false,
-    logo: ARTISTS_IMAGE.BoA,
+    logo: ARTISTS_IMAGE.NCT127,
   },
   {
     image: KANGTA_IMAGE,
-    name: 'KANGTA8',
+    name: 'NCT DREAM',
     backgroundColor: '#ffffff',
-    checked: false,
-    logo: ARTISTS_IMAGE.BoA,
+    logo: ARTISTS_IMAGE.NCT_DREAM,
   },
   {
     image: KANGTA_IMAGE,
-    name: 'KANGTA9',
+    name: 'WayV',
     backgroundColor: '#ffffff',
-    checked: false,
-    logo: ARTISTS_IMAGE.BoA,
+    logo: ARTISTS_IMAGE.WayV,
+  },
+  {
+    image: KANGTA_IMAGE,
+    name: 'aespa',
+    backgroundColor: '#da94ee',
+    logo: ARTISTS_IMAGE.Aespa,
   },
 ]
 
 const ArtistList = () => {
+  const { artistCheckList } = artistCheckListStore()
+  const insets = useSafeAreaInsets()
+
   return (
     <FlatList
       numColumns={2}
       data={data}
+      style={{ paddingBottom: insets.top }}
       contentContainerStyle={{ gap: 12 }}
       columnWrapperStyle={{ gap: 12 }}
       keyExtractor={(item) => item.name}
-      renderItem={({ item, index }) => <ArtistCard key={index} {...item} />}
+      renderItem={({ item, index }) => (
+        <ArtistCard
+          key={index}
+          {...item}
+          checked={!!artistCheckList.find((i) => i === item.name)}
+        />
+      )}
     />
   )
 }

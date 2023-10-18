@@ -6,6 +6,7 @@ import {
   StyleSheet,
 } from 'react-native'
 import { ArtistCardActive, ArtistCardDefault } from '../atoms'
+import { artistCheckListStore } from '../store'
 
 interface Props {
   image: ImageSourcePropType
@@ -17,8 +18,14 @@ interface Props {
 
 const ArtistCard = ({ image, name, backgroundColor, logo, checked }: Props) => {
   const [isChecked, setIsChecked] = useState<boolean>(checked)
+  const { addArtist, removeArtist } = artistCheckListStore()
 
   const onPress = () => {
+    if (isChecked) {
+      removeArtist(name)
+    } else {
+      addArtist(name)
+    }
     setIsChecked((prev) => !prev)
   }
 

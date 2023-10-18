@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 const Screens = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={SCREENS.interest}>
+      <Stack.Navigator initialRouteName={SCREENS.home}>
         <Stack.Screen
           name={SCREENS.home}
           component={HomeScreen}
