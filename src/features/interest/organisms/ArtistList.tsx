@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, StyleSheet, View } from 'react-native'
 import { ArtistCard } from '../molecules'
 import KANGTA_IMAGE from '@src/assets/images/KANGTA_IMAGE.png'
 import { ArtistsType, ARTISTS_IMAGE } from '@src/constant'
@@ -101,25 +101,33 @@ const data: {
 
 const ArtistList = () => {
   const { artistCheckList } = artistCheckListStore()
-  const insets = useSafeAreaInsets()
 
   return (
-    <FlatList
-      numColumns={2}
-      data={data}
-      style={{ paddingBottom: insets.top }}
-      contentContainerStyle={{ gap: 12 }}
-      columnWrapperStyle={{ gap: 12 }}
-      keyExtractor={(item) => item.name}
-      renderItem={({ item, index }) => (
-        <ArtistCard
-          key={index}
-          {...item}
-          checked={!!artistCheckList.find((i) => i === item.name)}
-        />
-      )}
-    />
+    <View style={styles.wrapper}>
+      <FlatList
+        numColumns={2}
+        data={data}
+        contentContainerStyle={{ gap: 12, paddingBottom: 76 }}
+        columnWrapperStyle={{ gap: 12 }}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.name}
+        renderItem={({ item, index }) => (
+          <ArtistCard
+            key={index}
+            {...item}
+            checked={!!artistCheckList.find((i) => i === item.name)}
+          />
+        )}
+      />
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+})
 
 export default ArtistList
