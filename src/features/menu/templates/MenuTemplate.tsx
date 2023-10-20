@@ -1,4 +1,4 @@
-import { artistCheckListStore } from '@src/features/interest/store'
+import { interestArtistStore } from '@src/store'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { MenuSection } from '../atoms'
@@ -7,13 +7,13 @@ import { Column } from '../molecules'
 import { Footer, Interest, Profile } from '../organisms'
 
 const MenuTemplate = () => {
-  const { artistCheckList } = artistCheckListStore()
+  const { interestArtist } = interestArtistStore()
 
   return (
     <View>
       <Profile username='변찬우' email='chan1234@naver.com' />
       <View style={styles.menus}>
-        <Interest artists={artistCheckList} />
+        <Interest artists={interestArtist} />
 
         {SettingList.map((i) => (
           <MenuSection key={i.name} label={i.name}>

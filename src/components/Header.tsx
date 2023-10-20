@@ -8,7 +8,7 @@ import { SCREENS } from '@src/constant'
 
 const Header = () => {
   const insets = useSafeAreaInsets()
-  const navigate = useNavigate()
+  const { navigate } = useNavigate()
 
   const MoveToMenu = () => navigate(SCREENS.menu)
 

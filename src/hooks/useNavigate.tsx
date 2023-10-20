@@ -14,7 +14,7 @@ const useNavigate = () => {
 
   const navigation = useNavigation<ScreenProp>()
 
-  return navigation.navigate
+  return navigation
 }
 
 export default useNavigate

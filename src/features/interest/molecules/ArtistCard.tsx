@@ -1,4 +1,5 @@
 import { ArtistsType } from '@src/constant'
+import { interestArtistStore } from '@src/store'
 import React, { useState } from 'react'
 import {
   ImageBackground,
@@ -7,7 +8,6 @@ import {
   StyleSheet,
 } from 'react-native'
 import { ArtistCardActive, ArtistCardDefault } from '../atoms'
-import { artistCheckListStore } from '../store'
 
 interface Props {
   image: ImageSourcePropType
@@ -27,7 +27,7 @@ const ArtistCard = ({
   label,
 }: Props) => {
   const [isChecked, setIsChecked] = useState<boolean>(checked)
-  const { addArtist, removeArtist } = artistCheckListStore()
+  const { addArtist, removeArtist } = interestArtistStore()
 
   const onPress = () => {
     if (isChecked) {

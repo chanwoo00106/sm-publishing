@@ -3,8 +3,7 @@ import { FlatList, StyleSheet, View } from 'react-native'
 import { ArtistCard } from '../molecules'
 import KANGTA_IMAGE from '@src/assets/images/KANGTA_IMAGE.png'
 import { ArtistsType, ARTISTS_IMAGE } from '@src/constant'
-import { artistCheckListStore } from '../store'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { interestArtistStore } from '@src/store'
 
 const data: {
   image: any
@@ -100,7 +99,7 @@ const data: {
 ]
 
 const ArtistList = () => {
-  const { artistCheckList } = artistCheckListStore()
+  const { artistCheckList } = interestArtistStore()
 
   return (
     <View style={styles.wrapper}>

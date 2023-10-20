@@ -10,11 +10,11 @@ interface Props {
 }
 
 const Interest = ({ artists }: Props) => {
-  const navigate = useNavigate()
+  const { navigate } = useNavigate()
 
   const moveToInterest = () => navigate(SCREENS.interest)
 
-  if (!artists) {
+  if (!artists?.length) {
     return (
       <Pressable onPress={moveToInterest} style={styles.wrapper}>
         <Text style={styles.text}>관심 아티스트 설정하기</Text>

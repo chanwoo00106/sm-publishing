@@ -1,12 +1,22 @@
+import useNavigate from '@src/hooks/useNavigate'
+import { interestArtistStore } from '@src/store'
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Pressable } from 'react-native'
 
 const BottomButton = () => {
+  const { pop } = useNavigate()
+  const { saveArtists } = interestArtistStore()
+
+  const onSave = () => {
+    pop()
+    saveArtists()
+  }
+
   return (
     <View style={styles.wrapper}>
-      <View style={styles.buttonWrapper}>
+      <Pressable onPress={onSave} style={styles.buttonWrapper}>
         <Text style={styles.button}>저장</Text>
-      </View>
+      </Pressable>
     </View>
   )
 }

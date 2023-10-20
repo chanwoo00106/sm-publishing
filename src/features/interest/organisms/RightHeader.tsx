@@ -1,14 +1,18 @@
 import { Close } from '@src/assets/svgs'
-import { SCREENS } from '@src/constant'
 import useNavigate from '@src/hooks/useNavigate'
+import { interestArtistStore } from '@src/store'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { WithLocalSvg } from 'react-native-svg'
 
 const RightHeader = () => {
-  const navigate = useNavigate()
+  const { pop } = useNavigate()
+  const { clearCheckList } = interestArtistStore()
 
-  const MoveToMenu = () => navigate(SCREENS.menu)
+  const MoveToMenu = () => {
+    pop()
+    clearCheckList()
+  }
 
   return (
     <TouchableOpacity onPress={MoveToMenu}>
